@@ -4,7 +4,7 @@ Test = require("zenrequest").Test
 
 module.exports = ->
   tasks = []
-  tasks.push _getIcon ZENrequest.domains[0]
+  tasks.push _getIcon site for site in ZENrequest.sites
   tasks
 
 
