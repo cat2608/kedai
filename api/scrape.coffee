@@ -5,7 +5,7 @@ scrape  = require "request"
 
 module.exports = (server) ->
 
-  server.get "/scrape/icon", (request, response) ->
+  server.post "/scrape/icon", (request, response) ->
     icon = []
     scrape request.parameters.domain, (error, result, html) ->
       return response.badRequest() if error
