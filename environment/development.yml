@@ -1,0 +1,6 @@
+# -- General Info --------------------------------------------------------------
+protocol : http
+host     : localhost
+port     : 8888
+type     : development
+timezone : Europe/Madrid
