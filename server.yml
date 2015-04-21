@@ -5,6 +5,11 @@ environment : development
 api:
   - scrape
 
+# -- Static resources ----------------------------------------------------------
+statics:
+  - url     : /assets
+    folder  : /assets
+
 # -- CORS Properties -----------------------------------------------------------
 headers:
   Access-Control-Allow-Origin: "*"

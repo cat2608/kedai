@@ -10,4 +10,4 @@ module.exports = ->
 
 # -- Promises ------------------------------------------------------------------
 _getIcon = (domain) -> ->
-  Test "POST", "scrape/icon", domain: domain, null, "Get icon from #{domain}"
+  Test "POST", "scrape/icon", site: domain, null, "Get icon from #{domain}"
