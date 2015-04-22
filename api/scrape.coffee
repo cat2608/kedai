@@ -5,8 +5,9 @@ fs      = require "fs"
 http    = require "http"
 scrape  = require "request"
 
-ROOT          = "#{__dirname}/../assets/images/icon.png"
 last_modified = null
+SITE          = null
+ROOT          = "#{__dirname}/../assets/images/icon.png"
 
 module.exports = (server) ->
 
@@ -21,7 +22,8 @@ module.exports = (server) ->
       return response.badRequest() if error
       if fs.existsSync ROOT
         cache_modified = fs.statSync(ROOT).mtime
-        if last_modified? and __time(last_modified) < __time(cache_modified)
+        valid_date = __time(last_modified) < __time(cache_modified)
+        if last_modified? and valid_date and SITE is request.parameters.site
           return response.ok()
         else
           $ = cheerio.load(html)
@@ -32,6 +34,7 @@ module.exports = (server) ->
             file = fs.createWriteStream ROOT
             http.get icon, (result) ->
               last_modified = result.headers["last-modified"]
+              SITE = request.parameters.site
               result.pipe file
               response.ok()
 
